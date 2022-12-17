@@ -2198,6 +2198,9 @@ mysql> select * from account;
 +----+--------+---------+
 3 rows in set (0.00 sec)
 ```
+![image](https://user-images.githubusercontent.com/111697938/208247916-d67702c7-295c-4c17-93ed-6d3033062489.png)
+![image](https://user-images.githubusercontent.com/111697938/208247937-7062d89d-5da8-4b68-ad79-78b22f3e2865.png)
+
 
 ## 7. 数据库迁移
 
