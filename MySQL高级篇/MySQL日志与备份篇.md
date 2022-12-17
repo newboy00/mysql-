@@ -996,6 +996,17 @@ GRANT REPLICATION SLAVE ON *.* TO 'slave1'@'%';
 #此语句必须执行。否则见下面。
 ALTER USER 'slave1'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 
+#若出现错误ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+#表示密码不符合权限，需要做出以下修改
+#查看密码安全等级 show variables like 'validate_password%';
+#其中，validate_password_number_count指定了密码中数据的长度，validate_password_special_char_count指定了密码中特殊字符的长度，
+#validate_password_mixed_case_count指定了密#码中大小字母的长度。
+#这些参数，默认值均为1，所以validate_password_length最小值为4，如果你显性指定validate_password_length的值小于4，
+#尽管不会报错，但validate_password_length的值将设为4
+
+set global validate_password_length=4;
+set global validate_password.policy = low;
+
 flush privileges;
 ```
 
